@@ -1,417 +1,952 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en" class="notranslate">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.3.0, mobirise.com">
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:image:src" content="assets/images/index-meta.png">
-  <meta property="og:image" content="assets/images/index-meta.png">
-  <meta name="twitter:title" content="Norwegian FLASH Radiotherapy Network (Nor FLASH)">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/norflash-128x128-1.png" type="image/x-icon">
-  <meta name="description" content="Norwegian FLASH Radiotherapy Network (Nor FLASH) serves as a hub for professionals involved in FLASH-RT, promoting collaboration, disseminating information, and contributing to the advancement of FLASH-RT in the global scientific community.">
-  
-  
-  <title>Norwegian FLASH Radiotherapy Network (Nor FLASH)</title>
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.css">
-  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.theme.css">
-  <link rel="stylesheet" href="assets/datepicker/jquery.datetimepicker.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
-  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<title data-en="Norwegian Flash Radiation Therapy Network" data-no="Norsk nettverk for FLASH-stråleterapi">Norwegian Flash Radiation Therapy Network</title>
+<meta name="description" data-en="Connecting Norwegian and international actors in FLASH radiation therapy — research groups, treatment centres, and medical-device companies — for exchange and complementary collaboration." data-no="Kobler sammen norske og internasjonale aktører innen FLASH-stråleterapi — forskningsgrupper, behandlingssentre og medisinsk utstyrsindustri — for utveksling og utfyllende samarbeid." content="Connecting Norwegian and international actors in FLASH radiation therapy — research groups, treatment centres, and medical-device companies — for exchange and complementary collaboration.">
+
+<!-- Favicon: the brand bolt mark, inlined as SVG (no extra file to host).
+     Ink tile + thicker ring so it survives light-mode tab strips at 16px. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='26' height='26' rx='6' fill='%23070B16'/%3E%3Ccircle cx='13' cy='13' r='11' fill='none' stroke='%23223050' stroke-width='1.5'/%3E%3Cpath d='M4 13h9l-3 8 12-14h-9l3-6z' fill='%2338BDF8'/%3E%3C/svg%3E">
+<link rel="mask-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cpath d='M4 13h9l-3 8 12-14h-9l3-6z' fill='black'/%3E%3C/svg%3E" color="#38BDF8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   NORWEGIAN FLASH RADIATION THERAPY NETWORK — single-file site
+   Palette drawn from the treatment-room world:
+   - ink        : dark bunker background
+   - cerenkov   : the blue glow of radiation in tissue (beam colour)
+   - dose-hot   : warm end of the clinical dose colourmap (Bragg peak)
+   Edit tokens below to re-skin the whole page.
+   ============================================================ */
+:root{
+  --ink:        #070B16;   /* deepest background            */
+  --ink-2:      #0C1324;   /* panel background              */
+  --ink-3:      #131C33;   /* raised panel / hover          */
+  --line:       #223050;   /* hairline borders              */
+  --cerenkov:   #38BDF8;   /* beam glow, primary accent     */
+  --cerenkov-2: #22D3EE;   /* brighter beam                 */
+  --dose-hot:   #FB7185;   /* Bragg-peak hot core           */
+  --dose-warm:  #F59E0B;   /* dose colourmap amber          */
+  --text:       #E9EEF9;   /* primary text                  */
+  --text-dim:   #93A0BC;   /* secondary text                */
+  --text-faint: #5C6A88;   /* captions / meta               */
+
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --body:    "IBM Plex Sans", system-ui, sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --wrap: 1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--cerenkov);color:var(--ink)}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+/* ---- Utility: mono eyebrow labels (console vernacular) ---- */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--cerenkov);
+  display:inline-flex;align-items:center;gap:.6em;
+}
+.eyebrow::before{
+  content:"";width:26px;height:1px;background:var(--cerenkov);
+  display:inline-block;opacity:.7;
+}
+
+/* =====================  HEADER  ===================== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  backdrop-filter:blur(12px);
+  background:rgba(7,11,22,.72);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s, background .3s;
+}
+header.scrolled{border-bottom-color:var(--line);background:rgba(7,11,22,.9)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:600;letter-spacing:.01em}
+.brand .mark{
+  width:26px;height:26px;position:relative;flex:0 0 auto;
+}
+.brand .mark svg{display:block}
+.brand small{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;
+  color:var(--text-faint);display:block;margin-top:1px;font-weight:400;
+}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{
+  font-size:.92rem;color:var(--text-dim);transition:color .2s;position:relative;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;
+  background:var(--cerenkov);transition:width .25s;
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.05em;
+  padding:9px 16px;border:1px solid var(--line);border-radius:2px;
+  color:var(--text)!important;transition:all .2s;
+}
+.nav-cta:hover{border-color:var(--cerenkov);background:rgba(56,189,248,.08)}
+/* language toggle — EN | NO, active side lit in beam blue */
+.lang{
+  display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:2px;
+  overflow:hidden;background:none;cursor:pointer;padding:0;font-family:var(--mono);
+}
+.lang span{
+  padding:7px 10px;font-size:.72rem;letter-spacing:.08em;color:var(--text-faint);
+  transition:color .2s, background .2s;
+}
+.lang span.on{color:var(--ink);background:var(--cerenkov);font-weight:600}
+.lang:hover{border-color:var(--cerenkov)}
+.lang:focus-visible{outline:2px solid var(--cerenkov);outline-offset:2px}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{display:block;width:22px;height:2px;background:var(--text);margin:4px 0;transition:.25s}
+
+/* =====================  HERO  ===================== */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding-top:68px;overflow:hidden;
+}
+#beam{position:absolute;inset:0;width:100%;height:100%;z-index:1;cursor:crosshair}
+.hero-veil{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 15% 40%, transparent 30%, rgba(7,11,22,.55) 100%),
+    linear-gradient(90deg, rgba(7,11,22,.82) 0%, rgba(7,11,22,.25) 48%, transparent 70%);
+}
+.hero-inner{position:relative;z-index:3;width:100%}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.hero-copy{max-width:660px}
+.hero h1{
+  font-family:var(--display);font-weight:600;line-height:1.02;
+  font-size:clamp(2.6rem,7vw,5.1rem);letter-spacing:-.02em;margin:22px 0 0;
+}
+.hero h1 .glow{
+  color:var(--cerenkov-2);
+  text-shadow:0 0 32px rgba(56,189,248,.55);
+}
+.hero p.lede{
+  font-size:clamp(1.02rem,1.6vw,1.22rem);color:var(--text-dim);
+  max-width:540px;margin:26px 0 0;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  font-family:var(--mono);font-size:.86rem;letter-spacing:.04em;
+  padding:14px 24px;border-radius:2px;cursor:pointer;transition:all .22s;
+  display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);
+}
+.btn-primary{background:var(--cerenkov);color:var(--ink);border-color:var(--cerenkov);font-weight:600}
+.btn-primary:hover{background:var(--cerenkov-2);box-shadow:0 0 34px rgba(56,189,248,.4);transform:translateY(-1px)}
+.btn-ghost{color:var(--text)}
+.btn-ghost:hover{border-color:var(--cerenkov);color:var(--cerenkov)}
+
+/* live readout console, bottom-left of hero */
+.readout{
+  position:absolute;left:28px;bottom:26px;z-index:3;
+  font-family:var(--mono);font-size:.74rem;color:var(--text-faint);
+  display:flex;gap:26px;flex-wrap:wrap;
+  border-left:1px solid var(--line);padding-left:16px;
+}
+.readout .r-val{color:var(--text);font-weight:500}
+.readout .r-hot{color:var(--dose-warm)}
+.hero-hint{
+  position:absolute;right:28px;bottom:26px;z-index:3;
+  font-family:var(--mono);font-size:.7rem;color:var(--text-faint);
+  letter-spacing:.08em;text-align:right;
+}
+.hero-hint b{color:var(--cerenkov)}
+
+/* =====================  SECTIONS  ===================== */
+section{position:relative;padding:110px 0}
+.section-head{max-width:720px;margin-bottom:52px}
+.section-head h2{
+  font-family:var(--display);font-weight:600;letter-spacing:-.015em;
+  font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.08;margin:16px 0 0;
+}
+.section-head p{color:var(--text-dim);margin-top:16px;font-size:1.05rem;max-width:620px}
+
+/* --- What is FLASH: comparison --- */
+.flash{background:
+  radial-gradient(90% 60% at 80% 0%, rgba(56,189,248,.05), transparent 60%),
+  var(--ink);border-top:1px solid var(--line)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+.rate-card{
+  border:1px solid var(--line);border-radius:4px;padding:28px;background:var(--ink-2);
+  position:relative;overflow:hidden;
+}
+.rate-card .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
+.rate-card .big{font-family:var(--display);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;margin-top:10px;line-height:1}
+.rate-card .unit{font-family:var(--mono);font-size:.9rem;color:var(--text-dim);margin-left:6px}
+.rate-card p{color:var(--text-dim);font-size:.94rem;margin-top:14px}
+.rate-card.flash-card{border-color:rgba(56,189,248,.4)}
+.rate-card.flash-card .big{color:var(--cerenkov-2);text-shadow:0 0 26px rgba(56,189,248,.35)}
+.rate-bar{height:6px;border-radius:3px;background:var(--ink-3);margin-top:20px;overflow:hidden}
+.rate-bar i{display:block;height:100%}
+.rate-bar.conv i{width:8%;background:var(--text-faint)}
+.rate-bar.flash i{width:100%;background:linear-gradient(90deg,var(--cerenkov),var(--dose-warm),var(--dose-hot))}
+.flash-note{margin-top:26px;font-size:.9rem;color:var(--text-faint);max-width:640px;font-family:var(--mono);line-height:1.7}
+
+/* --- What the network does --- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.cell{background:var(--ink-2);padding:34px 30px;transition:background .25s}
+.cell:hover{background:var(--ink-3)}
+.cell .num{font-family:var(--mono);font-size:.74rem;color:var(--cerenkov);letter-spacing:.1em}
+.cell h3{font-family:var(--display);font-weight:600;font-size:1.22rem;margin:16px 0 10px}
+.cell p{color:var(--text-dim);font-size:.94rem}
+
+/* --- Members --- */
+.members{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.member-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.member{
+  display:flex;gap:20px;align-items:flex-start;padding:26px;
+  border:1px solid var(--line);border-radius:4px;background:var(--ink);
+  transition:border-color .25s, transform .25s;
+}
+.member:hover{border-color:rgba(56,189,248,.45);transform:translateY(-2px)}
+.member .glyph{
+  width:46px;height:46px;flex:0 0 auto;border-radius:4px;
+  border:1px solid var(--line);display:grid;place-items:center;
+  font-family:var(--mono);font-weight:600;font-size:.9rem;color:var(--cerenkov);
+  background:var(--ink-2);
+}
+.member h4{font-family:var(--display);font-weight:600;font-size:1.06rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.member .kind{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);border:1px solid var(--line);padding:2px 7px;border-radius:2px}
+.member p{color:var(--text-dim);font-size:.9rem;margin-top:7px}
+.member a.link{color:var(--cerenkov);font-family:var(--mono);font-size:.78rem;margin-top:10px;display:inline-flex;align-items:center;gap:6px}
+.member a.link:hover{text-decoration:underline}
+.member.confirmed{border-color:rgba(56,189,248,.3)}
+.roster-note{font-family:var(--mono);font-size:.78rem;color:var(--text-faint);margin-top:22px}
+
+/* --- Join / value --- */
+.join-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.join-list{list-style:none;margin-top:8px}
+.join-list li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);color:var(--text-dim);font-size:.98rem}
+.join-list li:last-child{border-bottom:0}
+.join-list .k{font-family:var(--mono);color:var(--cerenkov);font-size:.8rem;flex:0 0 30px;padding-top:2px}
+.join-panel{
+  border:1px solid var(--line);border-radius:6px;padding:34px;background:
+   radial-gradient(120% 100% at 100% 0%, rgba(56,189,248,.08), transparent 55%), var(--ink-2);
+}
+.join-panel h3{font-family:var(--display);font-size:1.5rem;font-weight:600}
+.join-panel p{color:var(--text-dim);margin:12px 0 22px;font-size:.96rem}
+.field{margin-bottom:14px}
+.field label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);display:block;margin-bottom:7px}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--ink);border:1px solid var(--line);color:var(--text);
+  padding:12px 14px;border-radius:3px;font-family:var(--body);font-size:.94rem;transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--cerenkov)}
+.field textarea{resize:vertical;min-height:88px}
+
+/* --- Contact / footer --- */
+footer{background:var(--ink);border-top:1px solid var(--line);padding:70px 0 40px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.foot-brand .mark{width:30px;height:30px;margin-bottom:16px}
+.foot-brand p{color:var(--text-dim);font-size:.92rem;max-width:340px;margin-top:6px}
+.foot-col h5{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px}
+.foot-col a{display:block;color:var(--text-dim);font-size:.92rem;padding:5px 0;transition:color .2s}
+.foot-col a:hover{color:var(--cerenkov)}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:54px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.74rem;color:var(--text-faint)}
+.foot-bottom a{color:var(--cerenkov)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* =====================  RESPONSIVE  ===================== */
+@media(max-width:880px){
+  .nav-links{
+    position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:flex-start;
+    gap:0;background:var(--ink-2);border-bottom:1px solid var(--line);padding:8px 28px 20px;
+    transform:translateY(-140%);transition:transform .3s;
+  }
+  .nav-links.open{transform:none}
+  .nav-links a{padding:13px 0;width:100%;border-bottom:1px solid var(--line)}
+  .nav-links .nav-cta{margin-top:14px}
+  .burger{display:block}
+  .compare,.grid-3,.member-grid,.join-grid,.foot-grid{grid-template-columns:1fr}
+  .grid-3{border:1px solid var(--line)}
+  .readout{position:static;margin-top:38px;border-left:0;padding-left:0}
+  .hero-hint{display:none}
+  section{padding:80px 0}
+}
+@media(max-width:520px){
+  .readout{gap:16px}
+  .join-grid{gap:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
-  
-  <section class="menu cid-s48OLK6784" once="menu" id="menu1-h">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top collapsed">
-        <div class="container">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    
-                        <a href="https://flashrt.center" target="_blank"><img src="assets/images/NorFLASH.png" alt="Norwegian FLASH Radiotherapy Network" style="height: 5.5rem;"></a>
-                    
-                </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="https://nsnct.org">Norwegian FLASH Radiotherapy Network (NorFLASH)</a></span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#content4-1b">News in FLASH Radiotherapy</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#content4-1d">What is FLASH Radiotherapy</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#content4-1e">About NorFLASH</a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#content4-1g">Membership</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#content4-1h">
-                            Contact</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#tabs1-y">Summary</a></li></ul>
-                
-                
-            </div>
-        </div>
+
+<!-- ==================== HEADER ==================== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Norwegian Flash Radiation Therapy Network — home">
+      <span class="mark" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <circle cx="13" cy="13" r="12" stroke="#223050"/>
+          <path d="M4 13h9l-3 8 12-14h-9l3-6z" fill="#38BDF8"/>
+        </svg>
+      </span>
+      <span>FLASH RT Network<small>Norway · flashrt.center</small></span>
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#flash" data-en="FLASH" data-no="FLASH">FLASH</a>
+      <a href="#work" data-en="Network" data-no="Nettverket">Network</a>
+      <a href="#members" data-en="Members" data-no="Medlemmer">Members</a>
+      <a href="#join" data-en="Join" data-no="Bli med">Join</a>
+      <a class="nav-cta" href="#contact" data-en="Contact" data-no="Kontakt">Contact</a>
+      <button class="lang" id="langToggle" aria-label="Switch language / Bytt språk">
+        <span id="langEn" class="on">EN</span><span id="langNo">NO</span>
+      </button>
     </nav>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
+<!-- ==================== HERO ==================== -->
+<div id="top"></div>
+<section class="hero" aria-label="Interactive FLASH beam">
+  <canvas id="beam" aria-hidden="true"></canvas>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-en="Ultra-high dose rate · ≥40 Gy/s" data-no="Ultrahøy doserate · ≥40 Gy/s">Ultra-high dose rate · ≥40 Gy/s</span>
+        <h1 data-en='Radiation delivered <span class="glow">faster than harm</span>.' data-no='Stråling levert <span class="glow">raskere enn skaden</span>.'>Radiation delivered <span class="glow">faster than harm</span>.</h1>
+        <p class="lede"
+           data-en="A Norwegian hub connecting research groups, treatment centres, and medical-device companies working on FLASH radiotherapy — so people who build beams, plan treatments, and study the biology can find each other and collaborate where their strengths complement."
+           data-no="Et norsk knutepunkt som kobler sammen forskningsgrupper, behandlingssentre og medisinsk utstyrsindustri innen FLASH-stråleterapi — slik at de som bygger stråler, planlegger behandling og studerer biologien finner hverandre og samarbeider der styrkene utfyller hverandre.">
+          A Norwegian hub connecting research groups, treatment centres, and
+          medical-device companies working on FLASH radiotherapy — so people
+          who build beams, plan treatments, and study the biology can find each
+          other and collaborate where their strengths complement.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#join" data-en="Join the network →" data-no="Bli med i nettverket →">Join the network →</a>
+          <a class="btn btn-ghost" href="#flash" data-en="What is FLASH?" data-no="Hva er FLASH?">What is FLASH?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="readout" aria-hidden="true">
+    <span><span data-en="DOSE RATE" data-no="DOSERATE">DOSE RATE</span> <span class="r-val r-hot" id="ro-rate">0.03</span> Gy/s</span>
+    <span><span data-en="DEPTH" data-no="DYBDE">DEPTH</span> <span class="r-val" id="ro-depth">0</span> mm</span>
+    <span><span data-en="PULSE" data-no="PULS">PULSE</span> <span class="r-val" id="ro-pulse">—</span></span>
+    <span><span data-en="MODE" data-no="MODUS">MODE</span> <span class="r-val" id="ro-mode">CONVENTIONAL</span></span>
+  </div>
+  <div class="hero-hint" aria-hidden="true"
+       data-en="move to aim the beam<br><b>click</b> to fire a FLASH pulse"
+       data-no="beveg musa for å sikte strålen<br><b>klikk</b> for å fyre av en FLASH-puls">
+    move to aim the beam<br><b>click</b> to fire a FLASH pulse
+  </div>
 </section>
 
-<section class="content4 cid-tYaQlBoUuu" id="content4-1b">
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-12">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-4">News in FLASH Radiotherapy</h3>
-                
-                
-            </div>
-        </div>
+<!-- ==================== WHAT IS FLASH ==================== -->
+<section class="flash" id="flash">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-en="The physics" data-no="Fysikken">The physics</span>
+      <h2 data-en="Same dose. A thousand times faster." data-no="Samme dose. Tusen ganger raskere.">Same dose. A thousand times faster.</h2>
+      <p data-en="FLASH radiotherapy delivers a full treatment dose in a fraction of a second, at dose rates orders of magnitude above conventional beams. In preclinical work this ultra-fast delivery appears to spare healthy tissue while still controlling the tumour — the effect the field is now racing to understand and translate to patients."
+         data-no="FLASH-stråleterapi leverer en full behandlingsdose på brøkdelen av et sekund, med doserater flere størrelsesordener over konvensjonelle stråler. I prekliniske studier ser denne ultraraske leveringen ut til å skåne friskt vev samtidig som svulsten kontrolleres — effekten fagfeltet nå kappes om å forstå og overføre til pasienter.">
+        FLASH radiotherapy delivers a full treatment dose in a fraction of a
+        second, at dose rates orders of magnitude above conventional beams. In
+        preclinical work this ultra-fast delivery appears to spare healthy
+        tissue while still controlling the tumour — the effect the field is now
+        racing to understand and translate to patients.
+      </p>
     </div>
+    <div class="compare">
+      <div class="rate-card reveal">
+        <span class="tag" data-en="Conventional radiotherapy" data-no="Konvensjonell stråleterapi">Conventional radiotherapy</span>
+        <div class="big">~0.03<span class="unit">Gy/s</span></div>
+        <div class="rate-bar conv"><i></i></div>
+        <p data-en="Dose spread over minutes across many fractions. Healthy tissue in the beam path absorbs damage along the way."
+           data-no="Dosen fordeles over minutter og mange fraksjoner. Friskt vev i strålebanen tar opp skade underveis.">Dose spread over minutes across many fractions. Healthy tissue in the
+           beam path absorbs damage along the way.</p>
+      </div>
+      <div class="rate-card flash-card reveal">
+        <span class="tag" data-en="FLASH radiotherapy" data-no="FLASH-stråleterapi">FLASH radiotherapy</span>
+        <div class="big">≥40<span class="unit">Gy/s</span></div>
+        <div class="rate-bar flash"><i></i></div>
+        <p data-en="The same physical dose delivered in under a second. The observed normal-tissue sparing is what makes FLASH worth building around."
+           data-no="Samme fysiske dose levert på under ett sekund. Den observerte skåningen av normalvev er grunnen til at FLASH er verdt å bygge et nettverk rundt.">The same physical dose delivered in under a second. The observed
+           normal-tissue sparing is what makes FLASH worth building around.</p>
+      </div>
+    </div>
+    <p class="flash-note"
+       data-en="// Delivered experimentally with electrons, protons, and photons. With particle beams the dose concentrates at the Bragg peak — deep in the target, sparing the entrance — which is the interaction you are steering in the beam above. Mechanisms remain under active investigation."
+       data-no="// Levert eksperimentelt med elektroner, protoner og fotoner. Med partikkelstråler konsentreres dosen i Bragg-toppen — dypt i målet, mens inngangen skånes — og det er nettopp dette du styrer i strålen over. Mekanismene er fortsatt under aktiv utforskning.">
+      // Delivered experimentally with electrons, protons, and photons. With
+      particle beams the dose concentrates at the Bragg peak — deep in the
+      target, sparing the entrance — which is the interaction you are steering
+      in the beam above. Mechanisms remain under active investigation.
+    </p>
+  </div>
 </section>
 
-<section class="gallery2 cid-tW4AlMs2cK" id="gallery2-16">
-    
-    
-    <div class="container">
-        
-        <div class="row mt-4">
-            <div class="item features-image сol-12 col-md-6 col-lg-4">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://www.clinicaltrialsarena.com/news/first-randomised-phase-ii-trial-using-flash-radiotherapy-for-nmsc-treatment/" target="_blank"><img src="assets/images/first-randomised-phase-ii-trial-using-flash-radiotherapy-for-nmsc-605x141.png" alt="First randomised Phase II trial using FLASH radiotherapy for NMSC"></a>
-                    </div>
-                    <div class="item-content">
-                        
-                        
-                        <p class="mbr-text mbr-fonts-style mt-3 display-4"><a href="https://www.clinicaltrialsarena.com/news/first-randomised-phase-ii-trial-using-flash-radiotherapy-for-nmsc-treatment/" class="text-primary" target="_blank">First randomised Phase II trial using FLASH radiotherapy for nonmelanoma skin cancer (NMSC) treatment</a><br><br>May 2023<br>Source:&nbsp;Clinical Trials Arena</p>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-4">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://medicalxpress.com/news/2023-07-x-ray-spectroscopy-cancer-therapy-effective.html" target="_blank"><img src="assets/images/use-x-ray-spectroscopy-to-explain-why-flash-cancer-therapy-is-effective-605x139.png" alt="Use X-ray spectroscopy to explain why FLASH cancer therapy is effective"></a>
-                    </div>
-                    <div class="item-content">
-                        
-                        
-                        <p class="mbr-text mbr-fonts-style mt-3 display-4"><a href="https://medicalxpress.com/news/2023-07-x-ray-spectroscopy-cancer-therapy-effective.html" class="text-primary" target="_blank">Researchers use X-ray spectroscopy to explain why FLASH cancer therapy is so effective</a><br><br>July 2023<br>Source:&nbsp;American Crystallographic Association &amp;&nbsp;Science X Network</p>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-4">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <a href="https://physicsworld.com/a/flash-irradiation-spares-immune-cells-during-proton-therapy/" target="_blank"><img src="assets/images/flash-irradiation-spares-immune-cells-during-proton-therapy-605x141.png" alt="FLASH irradiation spares immune cells during proton therapy"></a>
-                    </div>
-                    <div class="item-content">
-                        
-                        
-                        <p class="mbr-text mbr-fonts-style mt-3 display-4"><a href="https://physicsworld.com/a/flash-irradiation-spares-immune-cells-during-proton-therapy/" class="text-primary" target="_blank">FLASH irradiation spares immune cells during proton therapy</a><br><br>Jan 2024<br>Source:&nbsp;Physics World</p>
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
+<!-- ==================== WHAT THE NETWORK DOES ==================== -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-en="The network" data-no="Dette nettverket">The network</span>
+      <h2 data-en="FLASH needs beams, biology, and patients in the same room." data-no="FLASH krever stråler, biologi og pasienter i samme rom.">FLASH needs beams, biology, and patients in the same room.</h2>
+      <p data-en="Each group holds a piece. We connect Norwegian and international actors so complementary strengths meet — and so a small alliance punches above its weight in a field moving this fast."
+         data-no="Hver gruppe sitter på en brikke. Vi kobler sammen norske og internasjonale aktører slik at utfyllende styrker møtes — og slik en liten allianse hevder seg i et fagfelt som beveger seg så raskt.">
+        Each group holds a piece. We connect Norwegian and
+        international actors so complementary strengths meet — and so a small
+        alliance punches above its weight in a field moving this fast.
+      </p>
     </div>
+    <div class="grid-3">
+      <div class="cell reveal">
+        <span class="num" data-en="01 / Exchange" data-no="01 / Utveksling">01 / Exchange</span>
+        <h3 data-en="Move people and know-how" data-no="Flytt folk og fagkunnskap">Move people and know-how</h3>
+        <p data-en="Research visits, shared measurement campaigns, and joint training between accelerator physicists, radiobiologists, and clinicians."
+           data-no="Forskningsopphold, felles målekampanjer og felles opplæring mellom akseleratorfysikere, medisinske fysikere, strålebiologer og klinikere.">Research visits, shared measurement campaigns, and joint training
+           between accelerator physicists, medical physicists, radiobiologists, and clinicians.</p>
+      </div>
+      <div class="cell reveal">
+        <span class="num" data-en="02 / Complement" data-no="02 / Utfylling">02 / Complement</span>
+        <h3 data-en="Match strengths, not duplicate them" data-no="Sett sammen styrker, ikke doble dem">Match strengths, not duplicate them</h3>
+        <p data-en="A dosimetry lab, a proton centre, and a device maker each bring one piece. We help them assemble the whole."
+           data-no="Et dosimetrilaboratorium, et protonsenter og en utstyrsprodusent bringer hver sin brikke. Vi hjelper dem å sette sammen helheten.">A dosimetry lab, a proton centre, and a device maker each bring one
+           piece. We help them assemble the whole.</p>
+      </div>
+      <div class="cell reveal">
+        <span class="num" data-en="03 / Translate" data-no="03 / Overføring">03 / Translate</span>
+        <h3 data-en="From bench to beam line to bedside" data-no="Fra benk til stråle til pasient">From bench to beam line to bedside</h3>
+        <p data-en="Coordinated proposals, shared protocols, and a route from preclinical evidence toward safe first-in-human FLASH delivery."
+           data-no="Koordinerte søknader, felles protokoller og en vei fra prekliniske funn mot trygg FLASH-behandling av de første pasientene.">Coordinated proposals, shared protocols, and a route from
+           preclinical evidence toward safe first-in-human FLASH delivery.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="content4 cid-tYaR672JvH" id="content4-1d">
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-12">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-4">How FLASH Radiotherapy Works</h3>
-                
-                
-            </div>
-        </div>
+<!-- ==================== MEMBERS ==================== -->
+<section class="members" id="members">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-en="Who's in" data-no="Hvem er med">Who's in</span>
+      <h2 data-en="Member organisations" data-no="Medlemsorganisasjoner">Member organisations</h2>
+      <p data-en="Research groups, treatment centres, and companies across radiation and particle therapy. The network is open."
+         data-no="Forskningsgrupper, behandlingssentre og selskaper innen stråle- og partikkelterapi. Nettverket er åpent.">Research groups, treatment centres, companies, and individuals across radiation and
+         particle therapy. The network is open.</p>
     </div>
+    <div class="member-grid">
+
+      <div class="member confirmed reveal">
+        <div class="glyph">N</div>
+        <div>
+          <h4><span data-en="Norwegian Society for Neutron Capture Therapy" data-no="Norsk forening for nøytroninnfangningsterapi">Norwegian Society for Neutron Capture Therapy</span>
+            <span class="kind" data-en="Society" data-no="Forening">Society</span></h4>
+          <p data-en="Advancing neutron capture therapy in Norway — a targeted, particle-based approach with natural common ground for FLASH-era collaboration on beam biology and delivery."
+             data-no="Fremmer nøytroninnfangningsterapi i Norge — en målrettet, partikkelbasert tilnærming med naturlig felles grunn for FLASH-samarbeid om strålebiologi og levering.">Advancing neutron capture therapy in Norway — a targeted,
+             particle-based approach with natural common ground for FLASH-era
+             collaboration on beam biology and delivery.</p>
+          <a class="link" href="https://nsnct.org/" target="_blank" rel="noopener">nsnct.org ↗</a>
+        </div>
+      </div>
+<!--
+      <div class="member reveal">
+        <div class="glyph">RH</div>
+        <div>
+          <h4><span data-en="Radiumhospitalet — Radiotherapy Physics" data-no="Radiumhospitalet — stråleterapifysikk">Radiumhospitalet — Radiotherapy Physics</span>
+            <span class="kind" data-en="Treatment centre" data-no="Behandlingssenter">Treatment centre</span></h4>
+          <p data-en="Clinical radiotherapy and medical-physics group bringing patient pathways, quality assurance, and treatment-planning expertise."
+             data-no="Klinisk stråleterapi- og medisinsk fysikkmiljø som bidrar med pasientforløp, kvalitetssikring og doseplanlegging.">Clinical radiotherapy and medical-physics group bringing patient
+             pathways, quality assurance, and treatment-planning expertise.</p>
+          <a class="link" href="#contact" data-en="Request member profile ↗" data-no="Be om medlemsprofil ↗">Request member profile ↗</a>
+        </div>
+      </div>
+
+      <div class="member reveal">
+        <div class="glyph">PT</div>
+        <div>
+          <h4><span data-en="Nordic Proton &amp; Particle Centre" data-no="Nordisk proton- og partikkelsenter">Nordic Proton &amp; Particle Centre</span>
+            <span class="kind" data-en="Treatment centre" data-no="Behandlingssenter">Treatment centre</span></h4>
+          <p data-en="Particle-therapy beam line and Bragg-peak delivery — the hardware environment where proton FLASH is being explored."
+             data-no="Strålelinje for partikkelterapi og levering i Bragg-toppen — maskinvaremiljøet der proton-FLASH utforskes.">Particle-therapy beam line and Bragg-peak delivery — the hardware
+             environment where proton FLASH is being explored.</p>
+          <a class="link" href="#contact" data-en="Request member profile ↗" data-no="Be om medlemsprofil ↗">Request member profile ↗</a>
+        </div>
+      </div>
+
+      <div class="member reveal">
+        <div class="glyph">UB</div>
+        <div>
+          <h4><span data-en="University Accelerator &amp; Dosimetry Group" data-no="Universitetsgruppe for akselerator og dosimetri">University Accelerator &amp; Dosimetry Group</span>
+            <span class="kind" data-en="Research" data-no="Forskning">Research</span></h4>
+          <p data-en="Ultra-high-dose-rate dosimetry, beam characterisation, and the radiobiology needed to measure the FLASH effect reliably."
+             data-no="Dosimetri ved ultrahøy doserate, strålekarakterisering og strålebiologien som trengs for å måle FLASH-effekten pålitelig.">Ultra-high-dose-rate dosimetry, beam characterisation, and the
+             radiobiology needed to measure the FLASH effect reliably.</p>
+          <a class="link" href="#contact" data-en="Request member profile ↗" data-no="Be om medlemsprofil ↗">Request member profile ↗</a>
+        </div>
+      </div>
+
+      <div class="member reveal">
+        <div class="glyph">MD</div>
+        <div>
+          <h4><span data-en="Boreal Beam Systems" data-no="Boreal Beam Systems">Boreal Beam Systems</span>
+            <span class="kind" data-en="Medical device" data-no="Medisinsk utstyr">Medical device</span></h4>
+          <p data-en="Accelerator and dose-monitoring hardware — the engineering partner turning FLASH physics into certifiable clinical equipment."
+             data-no="Akselerator- og dosemonitoreringsutstyr — ingeniørpartneren som gjør FLASH-fysikk om til sertifiserbart klinisk utstyr.">Accelerator and dose-monitoring hardware — the engineering partner
+             turning FLASH physics into certifiable clinical equipment.</p>
+          <a class="link" href="#contact" data-en="Request member profile ↗" data-no="Be om medlemsprofil ↗">Request member profile ↗</a>
+        </div>
+      </div>
+
+      <div class="member reveal">
+        <div class="glyph">+</div>
+        <div>
+          <h4><span data-en="Your organisation" data-no="Din organisasjon">Your organisation</span>
+            <span class="kind" data-en="Open seat" data-no="Ledig plass">Open seat</span></h4>
+          <p data-en="Research group, clinic, or company working on FLASH or particle therapy? There's room, and a reason, to be here."
+             data-no="Forskningsgruppe, klinikk eller selskap som jobber med FLASH eller partikkelterapi? Det er både plass og grunn til å være her.">Research group, clinic, or company working on FLASH or particle
+             therapy? There's room, and a reason, to be here.</p>
+          <a class="link" href="#join" data-en="Join the network ↗" data-no="Bli med i nettverket ↗">Join the network ↗</a>
+        </div>
+      </div>
+-->
+    </div>
+<!--
+    <p class="roster-note"
+       data-en="// Members other than the Norwegian Society for Neutron Capture Therapy are illustrative placeholders while the roster is being confirmed."
+       data-no="// Andre medlemmer enn Norsk forening for nøytroninnfangningsterapi er illustrerende plassholdere mens listen bekreftes.">// Members other than the Norwegian Society for Neutron Capture Therapy are illustrative placeholders while the roster is being confirmed.</p>
+-->
+  </div>
 </section>
 
-<section class="gallery3 cid-tVKIXnSlpY" id="gallery3-l">
-    
-    
-    <div class="container">
-        
-        <div class="row mt-4">
-            <div class="item features-image сol-12 col-md-6 col-lg-4">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/mbr-2-454x341.jpeg" alt="">
-                    </div>
-                    <div class="item-content">
-                        
-                        
-                        <p class="mbr-text mbr-fonts-style mt-3 display-4">Ultra-high dose rate radiation therapy (FLASH-RT) exhibits the ability to effectively eliminate tumour cells to the same extent as conventional dose rate radiation while preserving neighbouring healthy tissues.</p>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-4">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/mbr-605x242.jpg" alt="">
-                    </div>
-                    <div class="item-content">
-                        
-                        
-                        <p class="mbr-text mbr-fonts-style mt-3 display-4">FLASH-RT is administered at a rate of 40 Gy/second or more — or 1000 times the dose rate of conventional photon radiotherapy. This means that radiation doses typically administered to tumours over a span of several minutes can now be delivered within milliseconds.</p>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="item features-image сol-12 col-md-6 col-lg-4">
-                <div class="item-wrapper">
-                    <div class="item-img">
-                        <img src="assets/images/mbr-1-605x403.jpeg" alt="exposed to neutrons">
-                    </div>
-                    <div class="item-content">
-                        
-                        
-                        <p class="mbr-text mbr-fonts-style mt-3 display-4">Sparing of healthy tissues has been validated across various radiation modalities (X-ray, electron, proton) and in experiments involving cells, tissues, and animal models.&nbsp;The molecular mechanisms involved are under investigation.<br></p>
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
+<!-- ==================== JOIN ==================== -->
+<section id="join">
+  <div class="wrap">
+    <div class="join-grid">
+      <div class="reveal">
+        <span class="eyebrow" data-en="Become a member" data-no="Bli medlem">Become a member</span>
+        <h2 style="font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);letter-spacing:-.015em;margin:16px 0 8px;line-height:1.1"
+            data-en="Three kinds of partner, one shared target." data-no="Tre typer partnere, ett felles mål.">
+          Three kinds of partner, one shared target.</h2>
+        <ul class="join-list">
+          <li><span class="k">RES</span><span data-en="<b>Research groups</b> — physicists and radiobiologists measuring the FLASH effect and characterising ultra-high-dose-rate beams."
+                data-no="<b>Forskningsgrupper</b> — fysikere og strålebiologer som måler FLASH-effekten og karakteriserer stråler med ultrahøy doserate."><b>Research groups</b> — physicists and radiobiologists measuring the FLASH effect and characterising ultra-high-dose-rate beams.</span></li>
+          <li><span class="k">CLN</span><span data-en="<b>Treatment centres</b> — radiotherapy and particle-therapy clinics ready to host trials and translate protocols to patients."
+                data-no="<b>Behandlingssentre</b> — stråleterapi- og partikkelterapiklinikker som er klare til å huse studier og overføre protokoller til pasienter."><b>Treatment centres</b> — radiotherapy and particle-therapy clinics ready to host trials and translate protocols to patients.</span></li>
+          <li><span class="k">DEV</span><span data-en="<b>Device companies</b> — makers of accelerators, dose monitors, and delivery systems certifying FLASH-capable hardware."
+                data-no="<b>Utstyrsselskaper</b> — produsenter av akseleratorer, dosemonitorer og leveringssystemer som sertifiserer FLASH-kompatibelt utstyr."><b>Device companies</b> — makers of accelerators, dose monitors, and delivery systems certifying FLASH-capable hardware.</span></li>
+        </ul>
+      </div>
+      <div class="join-panel reveal" id="contact">
+        <h3 data-en="Introduce your organisation" data-no="Presenter organisasjonen din">Introduce your organisation</h3>
+        <p data-en="Tell us who you are and where you fit. We'll reply from <b>post@flashrt.center</b> and point you to the right partners."
+           data-no="Fortell oss hvem dere er og hvor dere passer inn. Vi svarer fra <b>post@flashrt.center</b> og setter dere i kontakt med de rette partnerne.">Tell us who you are and where you fit. We'll reply from
+           <b>post@flashrt.center</b> and point you to the right partners.</p>
+        <form id="joinForm" action="https://formspree.io/f/YOUR_ID" method="POST" novalidate>
+          <input type="hidden" name="_subject" id="fsSubject" value="FLASH RT Network — new introduction">
+          <div class="field">
+            <label for="org" data-en="Organisation" data-no="Organisasjon">Organisation</label>
+            <input id="org" name="org" type="text" data-en-ph="Institution or company" data-no-ph="Institusjon eller selskap" placeholder="Institution or company" required>
+          </div>
+          <div class="field">
+            <label for="type" data-en="You are a…" data-no="Dere er…">You are a…</label>
+            <select id="type" name="type">
+              <option data-en="Research group" data-no="Forskningsgruppe">Research group</option>
+              <option data-en="Treatment centre" data-no="Behandlingssenter">Treatment centre</option>
+              <option data-en="Medical-device company" data-no="Selskap innen medisinsk utstyr">Medical-device company</option>
+              <option data-en="Individual researcher" data-no="Enkeltforsker">Individual researcher</option>
+              <option data-en="Other" data-no="Annet">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="email" data-en="Contact email" data-no="Kontakt-e-post">Contact email</label>
+            <input id="email" name="email" type="email" data-en-ph="name@example.org" data-no-ph="navn@eksempel.no" placeholder="name@example.org" required>
+          </div>
+          <div class="field">
+            <label for="msg" data-en="Where you'd like to collaborate" data-no="Hvor dere ønsker å samarbeide">Where you'd like to collaborate</label>
+            <textarea id="msg" name="msg" data-en-ph="Beam physics, dosimetry, radiobiology, clinical translation…" data-no-ph="Strålefysikk, dosimetri, strålebiologi, klinisk overføring…" placeholder="Beam physics, dosimetry, radiobiology, clinical translation…"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center" data-en="Send introduction →" data-no="Send presentasjon →">Send introduction →</button>
+          <p id="formHint" style="font-family:var(--mono);font-size:.74rem;color:var(--text-faint);margin-top:12px"
+             data-en="// We usually reply from post@flashrt.center within a few days."
+             data-no="// Vi svarer vanligvis fra post@flashrt.center i løpet av noen dager.">// We usually reply from post@flashrt.center within a few days.</p>
+        </form>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="content4 cid-tYaRBJ223J" id="content4-1e">
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-12">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-4">About NorFLASH</h3>
-                
-                
-            </div>
-        </div>
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="mark" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 26 26" fill="none">
+            <circle cx="13" cy="13" r="12" stroke="#223050"/>
+            <path d="M4 13h9l-3 8 12-14h-9l3-6z" fill="#38BDF8"/>
+          </svg>
+        </span>
+        <div style="font-family:var(--display);font-weight:600;font-size:1.05rem"
+             data-en="Norwegian Flash Radiation Therapy Network" data-no="Norsk nettverk for FLASH-stråleterapi">Norwegian Flash Radiation Therapy Network</div>
+        <p data-en="Connecting Norwegian and international actors in FLASH radiotherapy for exchange and complementary collaboration."
+           data-no="Kobler sammen norske og internasjonale aktører innen FLASH-stråleterapi for utveksling og utfyllende samarbeid.">Connecting Norwegian and international actors in FLASH radiotherapy for exchange and complementary collaboration.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-en="Navigate" data-no="Naviger">Navigate</h5>
+        <a href="#flash" data-en="What is FLASH" data-no="Hva er FLASH">What is FLASH</a>
+        <a href="#work" data-en="The network" data-no="Nettverket">The network</a>
+        <a href="#members" data-en="Members" data-no="Medlemmer">Members</a>
+        <a href="#join" data-en="Join" data-no="Bli med">Join</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-en="Contact" data-no="Kontakt">Contact</h5>
+        <a href="mailto:post@flashrt.center">post@flashrt.center</a>
+        <a href="https://flashrt.center" target="_blank" rel="noopener">flashrt.center</a>
+        <a href="https://nsnct.org/" target="_blank" rel="noopener">NSNCT ↗</a>
+      </div>
     </div>
-</section>
-
-<section class="content14 cid-tW3NQGDQSB" id="content14-14">
-    
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12">
-                    
-                <ul class="list mbr-fonts-style display-4">
-                    <li><strong>Mission</strong><br><br>The Norwegian FLASH Radiotherapy Network (NorFLASH) is a non-profit, multidisciplinary professional association. NorFLASH is committed to advancing FLASH radiation therapy (FLASH-RT).</li>
-                    <li><strong>Purpose and Objectives</strong><br><br>NorFLASH's purpose is to help develop FLASH-RT in various scientific areas and brings together professionals from different fields. Scientific areas of focus include medical physics, biophysics, radiobiology, radiology, radiochemistry, medical device instrumentation, and clinical applications.<br><br>NorFLASH facilitates disseminating accurate scientific information about FLASH-RT, raising awareness of research findings, establishing connections with other professional societies and relevant international organisations, and undertaking other initiatives as deemed appropriate to advance the field.&nbsp;</li>
-                    <li><strong>Global Collaboration and Networking</strong><br><br>NorFLASH fosters communication and collaboration among scientists and individuals worldwide engaged in FLASH-RT-related activities.<br><br>NorFLASH aims to establish connections with other professional societies and relevant international organisations to enhance collaboration and knowledge-sharing.</li>
-                    <li><strong>Initiatives<br></strong><br>NorFLASH undertakes various initiatives as deemed appropriate to advance the field of FLASH-RT. These initiatives may include organising events, conferences, and activities that contribute to the growth and development of FLASH-RT.<br><br>NorFLASH serves as a hub for professionals involved in FLASH-RT, promoting collaboration, disseminating information, and contributing to the advancement of FLASH-RT in the global scientific community.</li>
-                </ul>
-            </div>
-        </div>
+    <div class="foot-bottom">
+      <span><span data-en="© " data-no="© ">© </span><span id="yr"></span><span data-en=" Norwegian Flash Radiation Therapy Network" data-no=" Norsk nettverk for FLASH-stråleterapi"> Norwegian Flash Radiation Therapy Network</span></span>
+      <span data-en='Built as an open collaboration hub · <a href="mailto:post@flashrt.center">post@flashrt.center</a>'
+            data-no='Bygget som et åpent samarbeidsknutepunkt · <a href="mailto:post@flashrt.center">post@flashrt.center</a>'>Built as an open collaboration hub · <a href="mailto:post@flashrt.center">post@flashrt.center</a></span>
     </div>
-</section>
+  </div>
+</footer>
 
-<section class="content4 cid-tYaS0UzOrJ" id="content4-1g">
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-12">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-4">NorFLASH Membership</h3>
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
+<script>
+/* ============================================================
+   1. HERO — interactive FLASH particle beam
+   Aim with the mouse; particle tracks stream from the gantry
+   nozzle and deposit a dose "bloom" (Bragg peak) at the cursor,
+   with the entrance path kept dim (tissue sparing). Click fires
+   a FLASH pulse and spikes the dose-rate readout.
+   ============================================================ */
+(function(){
+  const canvas = document.getElementById('beam');
+  if(!canvas) return;
+  const ctx = canvas.getContext && canvas.getContext('2d');
+  if(!ctx) return;                       // no canvas -> static hero, page still works
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-<section class="content5 cid-tW4VK1fNfw" id="content5-17">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12">
-                
-                
-                <p class="mbr-text mbr-fonts-style display-4">NorFLASH aims to promote the progress of science by facilitating interactions and cooperation between related fields. If you wish to become a member, please contact the secretariat (e-mail : post@flashrt.center).<br><br><strong>Membership Categories</strong></p>
-            </div>
-        </div>
-    </div>
-</section>
+  let W=0, H=0, DPR=1;
+  let nozzle = {x:0, y:0};
+  let target = {x:0, y:0};          // where the beam is aimed (Bragg peak)
+  const pointer = {x:0, y:0, active:false};
+  let particles = [];
+  let blooms = [];                  // accumulated dose deposits
+  let flash = 0;                    // FLASH pulse intensity 0..1
 
-<section class="content14 cid-tW4lEyCYHp" id="content14-15">
-    
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12">
-                    
-                <ul class="list mbr-fonts-style display-4">
-                    <li><strong>Regular Member</strong><br>An individual who conducts research that aligns with the objectives of NorFLASH.</li>
-                    <li><strong>Supporting Member&nbsp;</strong><br>An individual or a group that shares the objectives of NorFLASH and provides financial support for NorFLASH's activities.</li>
-                    <li><strong>Honorary Member</strong><br>An individual who has made distinguished contributions to NorFLASH. Honorary membership is recommended by the executive committee of NorFLASH and is approved in a general meeting.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio||1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W*DPR; canvas.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    nozzle.x = W*0.06; nozzle.y = H*0.52;
+    // default aim if pointer never moves
+    if(!pointer.active){ target.x = W*0.62; target.y = H*0.46; pointer.x=target.x; pointer.y=target.y; }
+  }
+  window.addEventListener('resize', resize);
 
-<section class="content4 cid-tYaS3jdJ4i" id="content4-1h">
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-12">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-4">Get in Touch</h3>
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
+  // pointer aiming
+  const rectOf = ()=>canvas.getBoundingClientRect();
+  function setPointer(cx, cy){
+    const r = rectOf();
+    pointer.x = Math.max(nozzle.x+40, Math.min(W-20, cx - r.left));
+    pointer.y = Math.max(20, Math.min(H-20, cy - r.top));
+    pointer.active = true;
+  }
+  canvas.addEventListener('mousemove', e=>setPointer(e.clientX, e.clientY));
+  canvas.addEventListener('touchmove', e=>{ if(e.touches[0]) setPointer(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
 
-<section class="form7 cid-tW1NJJaiKe" id="form7-v">
-    
-    
-    <div class="container">
-        
-        <div class="row justify-content-center mt-4">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler mx-auto" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="71WHQ/q5bVVA8smdIoaiOObbuIiPL7Yv/QLfQA5rqg/ZLlBKI81Q4/wvY/FwqxW+tasht0mPOuzqS9qDqqnTT0FLZPu8+ZsV1zU0EehuiHSoBOhFV7xAMZkq68PFBk0L">
-                    <p class="mbr-text mbr-fonts-style align-center mb-4 display-4">Please leave a message using the form below.</p>
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">You message has been saved. The NorFLASH team will be in contact with you shortly.</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
-                            problem!</div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="name">
-                            <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form7-v">
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="email">
-                            <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email-form7-v">
-                        </div>
-                        <div data-for="phone" class="col-lg-12 col-md-12 col-sm-12 form-group">
-                            <input type="tel" name="phone" placeholder="Message (and phone number)" data-form-field="phone" class="form-control" value="" id="phone-form7-v">
-                        </div>
-                        <div class="col-auto mbr-section-btn align-center"><button type="submit" class="btn btn-success display-4">Submit</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+  // FLASH pulse on click
+  function firePulse(){
+    flash = 1;
+    ro.mode.textContent = 'FLASH';
+    pulseUntil = performance.now() + 520;
+    // dense burst
+    const n = reduce ? 40 : 120;
+    for(let i=0;i<n;i++) spawn(true);
+  }
+  canvas.addEventListener('click', firePulse);
+  canvas.addEventListener('touchstart', e=>{ if(e.touches[0]){ setPointer(e.touches[0].clientX,e.touches[0].clientY); firePulse(); } }, {passive:true});
 
-<section class="content4 cid-tYaS48dTlq" id="content4-1i">
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-12">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-4">
-                    Offices
-                </h3>
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
+  // particle spawn along nozzle→target with slight spread
+  function spawn(isFlash){
+    const ang = Math.atan2(target.y-nozzle.y, target.x-nozzle.x);
+    const spread = (Math.random()-0.5)*0.09;
+    const a = ang + spread;
+    const dist = Math.hypot(target.x-nozzle.x, target.y-nozzle.y);
+    // stop point ~ near target, jittered = Bragg peak scatter
+    const stop = dist*(0.9 + Math.random()*0.18);
+    particles.push({
+      x:nozzle.x, y:nozzle.y,
+      vx:Math.cos(a), vy:Math.sin(a),
+      travelled:0, stop, a,
+      speed:(isFlash? 14:9) + Math.random()*4,
+      life:1, flash:!!isFlash
+    });
+  }
 
-<section class="map3 cid-tW1UkMcQpJ" id="map3-x">
-    
-    
-    
-    
+  // dose colourmap: cool cerenkov -> hot bragg core
+  function doseColour(t, alpha){
+    // t 0..1 (edge->core)
+    let r,g,b;
+    if(t<0.5){ const k=t/0.5; r=56+(245-56)*k; g=189+(158-189)*k; b=248+(11-248)*k; }
+    else     { const k=(t-0.5)/0.5; r=245+(251-245)*k; g=158+(113-158)*k; b=11+(133-11)*k; }
+    return `rgba(${r|0},${g|0},${b|0},${alpha})`;
+  }
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                
-            </div>
-            <div class="col-12 col-lg-6">
-                <h4 class="mbr-section-subtitle mb-3 align-center mbr-fonts-style display-4">Bergen</h4>
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126247.55405927342!2d5.185299381738916!3d60.36894987513441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x463cfeace6223393%3A0x63214955f30aac37!2sH%C3%B8gskulen%20p%C3%A5%20Vestlandet!5e0!3m2!1sen!2sno!4v1700370849574!5m2!1sen!2sno" allowfullscreen=""></iframe></div>
-            </div>
-            <div class="col-12 col-lg-6">
-                <h4 class="mbr-section-subtitle mb-3 mt-5 mt-lg-0 align-center mbr-fonts-style display-4">Tromsø</h4>
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d88676.43585269728!2d18.94546839995634!3d69.67918885353056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sno!4v1700390801478!5m2!1sen!2sno" allowfullscreen=""></iframe></div>
-            </div>
-        </div>
-    </div>
-</section>
+  const ro = {
+    rate:document.getElementById('ro-rate'),
+    depth:document.getElementById('ro-depth'),
+    pulse:document.getElementById('ro-pulse'),
+    mode:document.getElementById('ro-mode')
+  };
+  let pulseUntil = 0, roTick=0;
 
-<section class="tabs content18 cid-tW1WrbRMen" id="tabs1-y">
+  function updateReadout(now){
+    roTick++;
+    if(roTick%4) return;
+    const CONV = (document.documentElement.lang==='no') ? 'KONVENSJONELL' : 'CONVENTIONAL';
+    const depthMM = Math.round((target.x-nozzle.x)/W*260 + 20); // playful mapping
+    ro.depth.textContent = depthMM;
+    if(now < pulseUntil){
+      ro.rate.textContent = (40 + Math.random()*18).toFixed(0);
+      ro.pulse.textContent = (60+Math.random()*40|0)+' ms';
+    } else {
+      ro.rate.textContent = (0.02 + Math.random()*0.03).toFixed(2);
+      ro.pulse.textContent = '—';
+      if(ro.mode.textContent !== CONV) ro.mode.textContent = CONV;
+    }
+  }
 
-    
+  function frame(now){
+    // ease aim toward pointer
+    target.x += (pointer.x-target.x)*0.12;
+    target.y += (pointer.y-target.y)*0.12;
 
-    
-    <div class="container">
-        
-        <div class="row justify-content-center mt-4">
-            <div class="col-12 col-md-12">
-                <ul class="nav nav-tabs mb-4" role="tablist">
-                    <li class="nav-item first mbr-fonts-style"><a class="nav-link mbr-fonts-style show active display-4" role="tab" data-toggle="tab" href="#tabs1-y_tab0" aria-selected="true">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style active display-4" role="tab" data-toggle="tab" href="#tabs1-y_tab1" aria-selected="true">What is FLASH-RT</a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style active display-4" role="tab" data-toggle="tab" href="#tabs1-y_tab2" aria-selected="true">About NorFLASH&nbsp;</a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style active display-4" role="tab" data-toggle="tab" href="#tabs1-y_tab3" aria-selected="true">Membership</a></li>
-                    
-                    
-                </ul>
-                <div class="tab-content">
-                    <div id="tab1" class="tab-pane in active" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-4">Norwegian FLASH Radiotherapy Network (NorFLASH)<br><br>c/o yfch@hvl.no (NorFLASH secretariat)<br>Western Norway University of Applied Sciences<br>Inndalsveien 28, 5063 Bergen, Norway<br>e-mail : post@flashrt.center<br></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab2" class="tab-pane" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-4">
-                                    Ultra-high dose rate radiation therapy (FLASH-RT) (40 Gy/second or more) exhibits the ability to effectively eliminate tumour cells to the same extent as conventional dose rate radiation while preserving neighbouring healthy tissues.&nbsp;Sparing of healthy tissues has been validated across various radiation modalities (X-ray, electron, proton) and in experiments involving cells, tissues, and animal models. The molecular mechanisms involved are under investigation.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab3" class="tab-pane" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-4">
-                                    The Norwegian FLASH Radiotherapy Network (NorFLASH)&nbsp;fosters communication and collaboration among scientists and individuals worldwide engaged in FLASH-RT-related activities.&nbsp;NorFLASH serves as a hub for professionals involved in FLASH-RT, promoting collaboration, disseminating information, and contributing to the advancement of FLASH-RT in the global scientific community.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab4" class="tab-pane" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-4">If you wish to become a member, please contact the secretariat. e-mail : post@flashrt.center</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/d" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;"></p></section><script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/popper/popper.min.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/formstyler/jquery.formstyler.js"></script>  <script src="assets/formstyler/jquery.formstyler.min.js"></script>  <script src="assets/datepicker/jquery.datetimepicker.full.js"></script>  <script src="assets/mbr-tabs/mbr-tabs.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-  </body>
+    // fade trails
+    ctx.globalCompositeOperation='source-over';
+    ctx.fillStyle='rgba(7,11,22,0.22)';
+    ctx.fillRect(0,0,W,H);
+
+    ctx.globalCompositeOperation='lighter';
+
+    // ambient emission (beam on)
+    if(!reduce){ for(let i=0;i<3;i++) spawn(false); }
+    else if(particles.length<8){ spawn(false); }
+
+    // draw entrance beam guide (dim = sparing)
+    ctx.strokeStyle='rgba(56,189,248,0.10)';
+    ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(nozzle.x,nozzle.y); ctx.lineTo(target.x,target.y); ctx.stroke();
+
+    // nozzle / gantry marker
+    ctx.fillStyle='rgba(56,189,248,0.9)';
+    ctx.beginPath(); ctx.arc(nozzle.x,nozzle.y,4,0,7); ctx.fill();
+    ctx.strokeStyle='rgba(56,189,248,0.35)';
+    ctx.beginPath(); ctx.arc(nozzle.x,nozzle.y,10,0,7); ctx.stroke();
+
+    // particles
+    for(let i=particles.length-1;i>=0;i--){
+      const p=particles[i];
+      const step=p.speed;
+      p.x+=p.vx*step; p.y+=p.vy*step; p.travelled+=step;
+      const prog=p.travelled/p.stop;
+      // track brightens as it nears the peak
+      const bright = 0.10 + prog*0.5;
+      ctx.strokeStyle=`rgba(120,220,255,${bright*0.5})`;
+      ctx.lineWidth=p.flash?1.4:0.8;
+      ctx.beginPath();
+      ctx.moveTo(p.x - p.vx*step, p.y - p.vy*step);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+      if(p.travelled>=p.stop){
+        // deposit dose at the Bragg peak
+        blooms.push({x:p.x, y:p.y, r:0, max:(p.flash?26:16)+Math.random()*10, a:p.flash?0.9:0.5, flash:p.flash});
+        particles.splice(i,1);
+      }
+    }
+    if(particles.length>1400) particles.splice(0, particles.length-1400);
+
+    // dose blooms (Bragg peak glow)
+    for(let i=blooms.length-1;i>=0;i--){
+      const b=blooms[i];
+      b.r += (b.max-b.r)*0.18; b.a *= 0.965;
+      const g=ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+      g.addColorStop(0, doseColour(1, b.a));
+      g.addColorStop(0.4, doseColour(0.6, b.a*0.6));
+      g.addColorStop(1, doseColour(0, 0));
+      ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,7); ctx.fill();
+      if(b.a<0.03) blooms.splice(i,1);
+    }
+    if(blooms.length>260) blooms.splice(0, blooms.length-260);
+
+    // FLASH white flash overlay
+    if(flash>0.01){
+      ctx.globalCompositeOperation='lighter';
+      ctx.fillStyle=`rgba(160,225,255,${flash*0.12})`;
+      ctx.fillRect(0,0,W,H);
+      flash*=0.9;
+    }
+
+    updateReadout(now);
+    requestAnimationFrame(frame);
+  }
+
+  resize();
+  requestAnimationFrame(frame);
+})();
+
+/* ============================================================
+   2. Header scroll state + mobile menu
+   ============================================================ */
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled', scrollY>20));
+const burger=document.getElementById('burger'), navlinks=document.getElementById('navlinks');
+burger.addEventListener('click',()=>{
+  const open=navlinks.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+
+/* ============================================================
+   3. Scroll reveal
+   ============================================================ */
+const revealEls=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.14});
+  revealEls.forEach(el=>io.observe(el));
+}else{
+  // no observer -> never hide content, just show it
+  revealEls.forEach(el=>el.classList.add('in'));
+}
+
+/* ============================================================
+   4. Language switch — EN / NO
+   Every translatable node carries data-en + data-no (and
+   data-en-ph / data-no-ph for placeholders). Nothing reloads;
+   we just swap innerHTML per node and set <html lang>.
+   To add a string: put both attributes on the element. Done.
+   ============================================================ */
+const LANG = {
+  en:{formErr:'// Please add your organisation and email.',
+      formSending:'// Sending…',
+      formOk:'// Thank you — we\'ve got it. We\'ll reply from post@flashrt.center.',
+      formFail:'// Something went wrong. Please email post@flashrt.center directly.'},
+  no:{formErr:'// Vennligst fyll inn organisasjon og e-post.',
+      formSending:'// Sender…',
+      formOk:'// Takk — vi har mottatt henvendelsen. Vi svarer fra post@flashrt.center.',
+      formFail:'// Noe gikk galt. Send gjerne e-post direkte til post@flashrt.center.'}
+};
+let lang = 'en';
+
+function setLang(next){
+  lang = next;
+  document.documentElement.lang = next;
+  const attr = 'data-' + next;
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const v = el.getAttribute(attr);
+    if(v === null) return;
+    if(el.tagName === 'TITLE') document.title = v;
+    else if(el.tagName === 'META') el.setAttribute('content', v);
+    else el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-en-ph]').forEach(el=>{
+    const v = el.getAttribute('data-' + next + '-ph');
+    if(v !== null) el.setAttribute('placeholder', v);
+  });
+  // toggle chrome
+  document.getElementById('langEn').classList.toggle('on', next==='en');
+  document.getElementById('langNo').classList.toggle('on', next==='no');
+  // the year is re-injected because its wrapper was rewritten above
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  try{ localStorage.setItem('flashrt-lang', next); }catch(e){ /* private mode / sandboxed */ }
+}
+
+document.getElementById('langToggle').addEventListener('click',()=>setLang(lang==='en'?'no':'en'));
+
+/* Restore a previous choice, otherwise follow the browser: Norwegian
+   speakers (nb/nn/no) land on Norwegian, everyone else on English. */
+(function initLang(){
+  let saved=null;
+  try{ saved = localStorage.getItem('flashrt-lang'); }catch(e){}
+  const nav = (navigator.language||'').slice(0,2).toLowerCase();
+  const guess = ['no','nb','nn'].includes(nav) ? 'no' : 'en';
+  setLang(saved || guess);
+})();
+
+/* ============================================================
+   5. Join form -> Formspree (async, no page navigation)
+   The form's action= is the no-JS fallback; this handler
+   intercepts and posts in the background instead.
+   ============================================================ */
+document.getElementById('joinForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const form=e.target;
+  const org=document.getElementById('org').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const hint=document.getElementById('formHint');
+  const btn=form.querySelector('button[type=submit]');
+  const T=LANG[lang];
+
+  if(!org||!email){ hint.textContent=T.formErr; hint.style.color='#FB7185'; return; }
+
+  // name the submission after the sender so the inbox is readable
+  document.getElementById('fsSubject').value='FLASH RT Network — introduction from '+org;
+
+  btn.disabled=true; btn.style.opacity=.6;
+  hint.textContent=T.formSending; hint.style.color='#93A0BC';
+  try{
+    const res=await fetch(form.action,{
+      method:'POST',
+      body:new FormData(form),
+      headers:{'Accept':'application/json'}
+    });
+    if(!res.ok) throw new Error(res.status);
+    form.reset();
+    hint.textContent=T.formOk; hint.style.color='#38BDF8';
+    btn.disabled=true; btn.style.opacity=.45;   // stay locked; prevents double-sends
+  }catch(err){
+    hint.textContent=T.formFail; hint.style.color='#FB7185';
+    btn.disabled=false; btn.style.opacity=1;
+  }
+});
+
+/* year */
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
 </html>
